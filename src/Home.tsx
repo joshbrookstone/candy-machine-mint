@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Button, Snackbar, Typography } from "@material-ui/core";
+import { Button, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import bs58 from "bs58";
 import * as anchor from "@project-serum/anchor";
@@ -10,12 +10,12 @@ import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 import Container from "@mui/material/Container";
 
-import { shortenAddress } from "./candy-machine";
+// import { shortenAddress } from "./candy-machine";
 import axios from "axios";
-import title from "./text2.png";
+// import title from "./text2.png";
 import Cookies from "js-cookie";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Title from "./Components/Title";
 
@@ -39,6 +39,7 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const recaptchaRef = useRef(null);
 
   const { publicKey, signMessage } = useWallet();
@@ -49,6 +50,7 @@ const Home = (props: HomeProps) => {
   });
 
   const [logged, setLogged] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [captchaDone, setCaptchaDone] = useState(false);
 
   useEffect(() => {
@@ -66,6 +68,7 @@ const Home = (props: HomeProps) => {
           (token) =>
             token?.updateAuthority ===
             "34AjXERmYgvtuH7i858XW26Cy7xu7HFjWTgXMMx7Ny6Y"
+          // eslint-disable-next-line eqeqeq
         ).length == 0
       )
         throw new Error("Not a Marker holder!");
@@ -77,6 +80,7 @@ const Home = (props: HomeProps) => {
         JSON.stringify("Marker wallet verification")
       );
       const signature = await signMessage(message);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const user = {
         tokens: neonToken
           .filter(
