@@ -2,7 +2,6 @@ import "./App.css";
 import { useMemo } from "react";
 
 import Home from "./Home";
-import packageJson from "../package.json";
 import * as anchor from "@project-serum/anchor";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
@@ -57,14 +56,6 @@ const theme = createTheme({
     },
   },
 });
-
-function MainApp(props: any) {
-  return (
-    <div className="App">
-      <footer className="App-header"></footer>
-    </div>
-  );
-}
 
 const App = () => {
   const endpoint = useMemo(() => clusterApiUrl(network), []);

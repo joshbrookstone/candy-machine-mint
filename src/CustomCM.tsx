@@ -1,6 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+/* eslint-disable no-useless-escape */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
-import { Button, Snackbar, Typography } from "@material-ui/core";
+import { Button, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import bs58 from "bs58";
 import * as anchor from "@project-serum/anchor";
@@ -23,21 +25,15 @@ import Cookies from "js-cookie";
 import React from "react";
 import { TextField } from "@mui/material";
 import { Connection, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+// import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 // import JsonRpc from "node-jsonrpc-client";
 import {
   getPhantomWallet,
   getSlopeWallet,
   getSolflareWallet,
-  getSolletExtensionWallet,
-  getSolletWallet,
-  Wallet,
-  WalletName,
 } from "@solana/wallet-adapter-wallets";
-import { useLocalStorage } from "@solana/wallet-adapter-react/src/useLocalStorage";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { useNavigate } from "react-router-dom";
-import { Simulate } from "react-dom/test-utils";
+// import { useNavigate } from "react-router-dom";
 import * as https from "https";
 
 const { JsonRpc } = require("node-jsonrpc-client");
@@ -45,7 +41,7 @@ const { JsonRpc } = require("node-jsonrpc-client");
 // const {http, https} = require('follow-redirects');
 
 axios.defaults.withCredentials = true;
-const sleep = (m: any) => new Promise((r) => setTimeout(r, m));
+// const sleep = (m: any) => new Promise((r) => setTimeout(r, m));
 const ConnectButton = styled(WalletDialogButton)``;
 
 const MintContainer = styled(Container)``; // add your styles here
@@ -70,15 +66,15 @@ const useStyles = makeStyles({
   },
 });
 const CustomCM = (props: CustomCMProps) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const classes = useStyles();
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
     message: "",
     severity: undefined,
   });
-  const MINUTE_MS = 300000;
-  const recaptchaRef = useRef(null);
+  // const MINUTE_MS = 300000;
+  // const recaptchaRef = useRef(null);
 
   const { publicKey, signMessage } = useWallet();
   const wallet = useAnchorWallet();
@@ -86,17 +82,17 @@ const CustomCM = (props: CustomCMProps) => {
     publicAddress: publicKey,
     connection: props.connection,
   });
-  const [localStorageKey, setLocalStorageKey] = useState("walletName");
   const [logged, setLogged] = useState(true);
-  const [captchaDone, setCaptchaDone] = useState(true);
   const [balance, setBalance] = useState<any>(0);
 
   const [intervalConsole, setIntervalConsole] = useState<any>(null);
-  const [isActive, setIsActive] = useState(false); // true when countdown completes
-  const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setIsSoldOut] = useState(false); // true when items remaining is zero
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [validated, setValidated] = useState(false); // true when user got to press MINT
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
@@ -116,8 +112,8 @@ const CustomCM = (props: CustomCMProps) => {
   );
   const [reactTreasuryText, setReactTreasuryText] = useState<string>("");
 
-  const [reactSolanaNetwork, setReactSolanaNetwork] =
-    useState<WalletAdapterNetwork>("mainnet-beta" as WalletAdapterNetwork);
+  // const [reactSolanaNetwork, setReactSolanaNetwork] =
+  //   useState<WalletAdapterNetwork>("mainnet-beta" as WalletAdapterNetwork);
   const [reactSolanaNetworkText, setReactSolanaNetworkText] =
     useState<string>("mainnet-beta");
 
@@ -132,6 +128,7 @@ const CustomCM = (props: CustomCMProps) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [numberOfMint, setNumberOfMint] = useState<number>(1);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const wallets = useMemo(
     () => [getPhantomWallet(), getSlopeWallet(), getSolflareWallet()],
     []
@@ -142,8 +139,6 @@ const CustomCM = (props: CustomCMProps) => {
       if (!wallet) return;
     })();
   };
-
-  const getValues = async () => {};
 
   const onMint = async () => {
     //why are you respecting a buttom?
@@ -213,6 +208,7 @@ const CustomCM = (props: CustomCMProps) => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const renderTitle = () => {
     return (
       <img
@@ -234,6 +230,7 @@ const CustomCM = (props: CustomCMProps) => {
       });
     }
     console.log(wallet);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet]);
 
   async function fetchBalance() {
@@ -310,6 +307,7 @@ const CustomCM = (props: CustomCMProps) => {
       }
     }
     fetchBalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
